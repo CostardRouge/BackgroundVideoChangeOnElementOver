@@ -13,12 +13,41 @@ VideoChangeOnElementOver.prototype.init = function(callback) {
 };
 
 VideoChangeOnElementOver.prototype.bindEvents = function() {
-    var sequencer = this;
+    var self = this;
+    var videoElement = $(this.options.videoTagSelector);
+    var videoSourceElement = $(this.options.videoSourceTagSelector);
 
-    $(document).mousemove(function(event) {
-        sequencer.detectZone(event.pageX, event.pageY);
-        //console.log("X: " + event.pageX + " Y: " + event.pageY);
+    //console.log(videoElement);
+
+    $('body').on('mouseenter', 'div.video-change-action', function(event) {
+
+        var element = $(this);
+        var videoName = element.data('video-name');
+        var videoPositions = element.data('video-position');
+
+        if (videoName != undefined && videoPositions != undefined) {
+            var videoPositions = videoPositions.split(',');
+
+            videoSourceElement.attr('src', self.findVideoSourceByVideoName(videoName));
+            videoSourceElement.attr('type', self.findVideoTypeByVideoName(videoName));
+
+            videoElement.load();
+            videoElement.currentTime = videoPositions[0];
+            
+
+            // console.log(videoPositions);
+            // console.log(videoName);
+
+        }
     });
+};
+
+VideoChangeOnElementOver.prototype.findVideoSourceByVideoName = function(video_name) {
+    return this.options.videoSources[video_name].videoSource;
+};
+
+VideoChangeOnElementOver.prototype.findVideoTypeByVideoName = function(video_name) {
+    return this.options.videoSources[video_name].videoType;
 };
 
 VideoChangeOnElementOver.prototype.detectZone = function(x_mouse_position, y_mouse_position) {

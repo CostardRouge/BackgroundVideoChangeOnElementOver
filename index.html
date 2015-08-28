@@ -49,21 +49,24 @@
                 z-index: -99;
                 opacity: 0.6;
             }
+            div.video-change-action {
+                height: 100vh;
+            }
         </style>
     </head>
 
     <body>
         <div class="container-fluid text-center">
             <div class="row">
-                <div class="col-md-4 video-change-action" data-video="tooltip" data-video-position="0,5">
+                <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="0,5">
 
                 </div>
 
-                <div class="col-md-4 video-change-action" data-video="tooltip" data-video-position="5,10">
+                <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="5,10">
 
                 </div>
 
-                <div class="col-md-4 video-change-action" data-video="tooltip" data-video-position="10,15">
+                <div class="col-md-4 video-change-action" data-video-name="noise_video_test_ogg" data-video-position="10,15">
 
                 </div>
             </div>
@@ -71,8 +74,8 @@
 
         <div class="background-video">
             <div class="background-video overlay"></div>
-            <video id="example" autoplay="true" loop="loop" muted="muted" volume="0" preload="none">
-               <source src="video.mp4" type="video/mp4">
+            <video id="example" autoplay loop="loop" muted="muted" volume="0" preload="none">
+               <source src="" type="">
             </video>
         </div>
 
@@ -84,10 +87,21 @@
             $( document ).ready(function() {
                 var options = {
                     videoTagSelector: "video[id='example']",
-                    elementsSelector: "div[class='video-change-action']"
+                    videoSourceTagSelector: "video[id='example'] source",
+                    elementsSelector: "div.video-change-action",
+                    videoSources: {
+                        "noise_video_test_mp4" : {
+                            videoSource: "http://www.w3schools.com/html/mov_bbb.mp4",
+                            videoType: "video/mp4"
+                        },
+                        "noise_video_test_ogg" : {
+                            videoSource: "http://www.w3schools.com/html/mov_bbb.ogg",
+                            videoType: "video/ogg"
+                        }
+                    }
                 };
 
-                var videoChangeOnElementOver = new VideoChangeOnElementOver();
+                var videoChangeOnElementOver = new VideoChangeOnElementOver(options);
 
                 videoChangeOnElementOver.init(function() {
                     console.log('videoChangeOnElementOver init callback');
