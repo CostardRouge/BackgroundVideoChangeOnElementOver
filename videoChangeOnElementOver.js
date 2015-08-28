@@ -40,12 +40,10 @@ VideoChangeOnElementOver.prototype.bindEvents = function() {
                 videoElement.load();
             }
 
-            videoElement.currentTime = 5;
+            videoElement[0].currentTime = videoPositions[0];
 
-            console.log(videoPositions);
-            console.log(videoElement.duration);
+            //console.log(videoPositions);
             // console.log(videoName);
-
         }
     });
 };

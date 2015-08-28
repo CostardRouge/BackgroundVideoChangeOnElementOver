@@ -18,7 +18,7 @@
                 <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="0,5">
                     <div class="display-table">
                         <div class="display-table-cell vertical-align-middle">
-                            <h4 class="badge">1</h4>
+                            <h4 class="badge">0,5′</h4>
                         </div>
                     </div>
                 </div>
@@ -26,15 +26,15 @@
                 <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="5,10">
                     <div class="display-table">
                         <div class="display-table-cell vertical-align-middle">
-                            <h4 class="badge">2</h4>
+                            <h4 class="badge">5,10′</h4>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 video-change-action" data-video-name="noise_video_test_ogg" data-video-position="10,15">
+                <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="10,15">
                     <div class="display-table">
                         <div class="display-table-cell vertical-align-middle">
-                            <h4 class="badge">3</h4>
+                            <h4 class="badge">10,15′</h4>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
 
         <div class="background-video">
             <div class="background-video overlay"></div>
-            <video id="example" autoplay loop="loop" muted="muted" volume="0" preload="none">
+            <video id="example" autoplay loop="loop" muted="muted" volume="0">
                <source src="" type="">
             </video>
         </div>
@@ -59,10 +59,10 @@
 
                     videoTagSelector: "video[id='example']",
                     videoSourceTagSelector: "video[id='example'] source",
-                    
+
                     videoSources: {
                         "noise_video_test_mp4" : {
-                            videoSource: "http://www.w3schools.com/html/mov_bbb.mp4",
+                            videoSource: "http://www.sample-videos.com/video/mp4/480/big_buck_bunny_480p_2mb.mp4",
                             videoType: "video/mp4"
                         },
                         "noise_video_test_ogg" : {
