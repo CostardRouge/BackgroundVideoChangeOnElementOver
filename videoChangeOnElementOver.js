@@ -28,14 +28,22 @@ VideoChangeOnElementOver.prototype.bindEvents = function() {
         if (videoName != undefined && videoPositions != undefined) {
             var videoPositions = videoPositions.split(',');
 
-            videoSourceElement.attr('src', self.findVideoSourceByVideoName(videoName));
-            videoSourceElement.attr('type', self.findVideoTypeByVideoName(videoName));
+            var elementVideoSource = self.findVideoSourceByVideoName(videoName);
+            var elementVideoType = self.findVideoTypeByVideoName(videoName);
 
-            videoElement.load();
-            videoElement.currentTime = videoPositions[0];
-            
+            var currentVideoSource = videoSourceElement.attr('src');
+            var currentVideoType = videoSourceElement.attr('type');
 
-            // console.log(videoPositions);
+            if ((currentVideoSource != elementVideoSource) || (currentVideoType != elementVideoType)) {
+                videoSourceElement.attr('src', elementVideoSource);
+                videoSourceElement.attr('type', elementVideoType);
+                videoElement.load();
+            }
+
+            videoElement.currentTime = 5;
+
+            console.log(videoPositions);
+            console.log(videoElement.duration);
             // console.log(videoName);
 
         }

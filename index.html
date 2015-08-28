@@ -7,67 +7,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-
-        <style media="screen">
-            .background-video {
-                display: block;
-                position: fixed;
-                overflow: hidden;
-                right: 0;
-                bottom: 0;
-                min-width: 100%;
-                min-height: 100%;
-                width: auto;
-                height: auto;
-                z-index: -101;
-                /*background: url(../images/homepage/backgrounds/homepage_video_poster.jpg);*/
-                /*background-size: cover;*/
-            }
-
-            .background-video video {
-                display: block;
-                position: fixed;
-                /*bottom: 0;*/
-                min-width: 100%;
-                min-height: 100%;
-                width: auto;
-                height: auto;
-                z-index: -100;
-            }
-
-            .background-video .overlay {
-                display: block;
-                position: fixed;
-                right: 0;
-                bottom: 0;
-                min-width: 100%;
-                min-height: 100%;
-                max-width: 100%;
-                width: auto;
-                height: auto;
-                z-index: -99;
-                opacity: 0.6;
-            }
-            div.video-change-action {
-                height: 100vh;
-            }
-        </style>
+        <link rel="stylesheet" href="./bootstrap.css">
+        <!-- <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'> -->
+        <link rel="stylesheet" href="./style.css">
     </head>
 
     <body>
-        <div class="container-fluid text-center">
+        <div class="container-fluid text-center font-family-asap">
             <div class="row">
                 <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="0,5">
-
+                    <div class="display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <h4 class="badge">1</h4>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="5,10">
-
+                    <div class="display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <h4 class="badge">2</h4>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-4 video-change-action" data-video-name="noise_video_test_ogg" data-video-position="10,15">
-
+                    <div class="display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <h4 class="badge">3</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,15 +49,17 @@
         </div>
 
         <script src="./videoChangeOnElementOver.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+        <script src="./jquery.min.js"></script>
+        <script src="./bootstrap.js"></script>
 
         <script type="text/javascript">
             $( document ).ready(function() {
                 var options = {
+                    elementsSelector: "div.video-change-action",
+
                     videoTagSelector: "video[id='example']",
                     videoSourceTagSelector: "video[id='example'] source",
-                    elementsSelector: "div.video-change-action",
+                    
                     videoSources: {
                         "noise_video_test_mp4" : {
                             videoSource: "http://www.w3schools.com/html/mov_bbb.mp4",
