@@ -1,27 +1,18 @@
-function VideoChangeOnElementOver(sequences) {
-    this.sequences = sequences;
-    this.debug_enabled = enable_debug;
-
-    this.log();
+function VideoChangeOnElementOver(options) {
+    this.options = options;
 }
 VideoChangeOnElementOver.prototype.init = function(callback) {
-    this.log("init");
-    var sequencer = this;
-
-    // History.Adapter.bind(window,'statechange',function() {
-    //
-    // });
+    var self = this;
 
     // Events registering
-    this.bindEvents(Sequencer);
+    this.bindEvents();
 
-    // Run callback function if defined
+    // Run callback function if defined (== 'function')
     if (callback !== undefined)
         callback();
 };
 
-VideoChangeOnElementOver.prototype.bindEvents = function(string) {
-    this.log("bindEvents");
+VideoChangeOnElementOver.prototype.bindEvents = function() {
     var sequencer = this;
 
     $(document).mousemove(function(event) {

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <title>videoChangeOnElementOver</title>
+
         <meta charset="utf-8">
-        <title>Skc.js</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
 
         <style media="screen">
             .background-video {
@@ -48,41 +51,46 @@
             }
         </style>
     </head>
+
     <body>
-        <div class="container text-center">
-            <h1>Hello folks!</h1>
+        <div class="container-fluid text-center">
+            <div class="row">
+                <div class="col-md-4 video-change-action" data-video="tooltip" data-video-position="0,5">
+
+                </div>
+
+                <div class="col-md-4 video-change-action" data-video="tooltip" data-video-position="5,10">
+
+                </div>
+
+                <div class="col-md-4 video-change-action" data-video="tooltip" data-video-position="10,15">
+
+                </div>
+            </div>
         </div>
 
         <div class="background-video">
             <div class="background-video overlay"></div>
-            <video autoplay="true" loop="loop" muted="muted" volume="0" preload="none">
+            <video id="example" autoplay="true" loop="loop" muted="muted" volume="0" preload="none">
                <source src="video.mp4" type="video/mp4">
             </video>
         </div>
 
-        <script src="./VideoChangeOnElementOver.js"></script>
-        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="./videoChangeOnElementOver.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
         <script type="text/javascript">
             $( document ).ready(function() {
-                var sequences = {
-                    1:"video.mp4",
-                    2:"",
-                    3:"",
-                    4:"",
-                    5:"",
-                    6:"",
-                    7:"",
-                    8:"",
-                    9:""
+                var options = {
+                    videoTagSelector: "video[id='example']",
+                    elementsSelector: "div[class='video-change-action']"
                 };
 
-                var skc = new Sequencer(sequences, false);
+                var videoChangeOnElementOver = new VideoChangeOnElementOver();
 
-                skc.init(function() {
-
+                videoChangeOnElementOver.init(function() {
+                    console.log('videoChangeOnElementOver init callback');
                 });
             });
         </script>
