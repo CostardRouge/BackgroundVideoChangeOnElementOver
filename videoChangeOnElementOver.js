@@ -17,13 +17,15 @@ VideoChangeOnElementOver.prototype.bindEvents = function() {
     var videoElement = $(this.options.videoTagSelector);
     var videoSourceElement = $(this.options.videoSourceTagSelector);
 
-    //console.log(videoElement);
+    $('body').on('mouseenter', this.options.elementsSelector, function(event) {
 
-    $('body').on('mouseenter', 'div.video-change-action', function(event) {
+        $('#lib-info').hide();
 
         var element = $(this);
         var videoName = element.data('video-name');
         var videoPositions = element.data('video-position');
+
+        $(self.options.elementsSelector).not(this).removeClass('active');
 
         if (videoName != undefined && videoPositions != undefined) {
             var videoPositions = videoPositions.split(',');
@@ -40,10 +42,38 @@ VideoChangeOnElementOver.prototype.bindEvents = function() {
                 videoElement.load();
             }
 
-            videoElement[0].currentTime = videoPositions[0];
+            // Check if current element video ain't already playing
+            if (!element.hasClass('active'))
+                videoElement[0].currentTime = videoPositions[0];
 
-            //console.log(videoPositions);
-            // console.log(videoName);
+            element.addClass('active');
+        }
+    });
+
+    $('body').on('mouseleave', this.options.elementsSelector, function(event) {
+        var element = $(this);
+
+        //  check if default video looping strategy is defined
+        if (self.options.defaultVideo) {
+            element.removeClass('active');
+            $('#lib-info').show();
+
+            // launch default video
+        }
+    });
+
+    videoElement.on('timeupdate', function(event) {
+        var currentElement = $(self.options.elementsSelector+'.active');
+        var currentElementVideoPositions = currentElement.data('video-position');
+
+        if (currentElementVideoPositions != undefined) {
+            var currentElementVideoPositions = currentElementVideoPositions.split(',');
+
+            var videoCurrentTime = this.currentTime;
+            if (videoCurrentTime > currentElementVideoPositions[1]) {
+                videoElement[0].currentTime = currentElementVideoPositions[0];
+                this.currentTime = currentElementVideoPositions[0];
+            }
         }
     });
 };
@@ -54,89 +84,4 @@ VideoChangeOnElementOver.prototype.findVideoSourceByVideoName = function(video_n
 
 VideoChangeOnElementOver.prototype.findVideoTypeByVideoName = function(video_name) {
     return this.options.videoSources[video_name].videoType;
-};
-
-VideoChangeOnElementOver.prototype.detectZone = function(x_mouse_position, y_mouse_position) {
-
-    var width = $(document).width();
-    var height = $(document).height();
-
-    var single_block_width = $(document).width() / 3;
-    var single_block_height = $(document).height() / 3;
-
-    var first_row = (y_mouse_position >= 0) && (y_mouse_position <= (single_block_height * 1)) ? true : false;
-    var second_row = (y_mouse_position >= (single_block_height * 1)) && (y_mouse_position <= (single_block_height * 2)) ? true : false;
-    var third_row = (y_mouse_position >= (single_block_height * 2)) && (y_mouse_position <= (single_block_height * 3)) ? true : false;
-
-    var first_col = (x_mouse_position >= 0) && (x_mouse_position <= (single_block_width * 1)) ? true : false;
-    var second_col = (x_mouse_position >= (single_block_width * 1)) && (x_mouse_position <= (single_block_width * 2)) ? true : false;
-    var third_col = (x_mouse_position >= (single_block_width * 2)) && (x_mouse_position <= (single_block_width * 3)) ? true : false;
-
-    var conditions = [];
-    //
-    // conditions[1] = {row: first_row, col: first_col};
-    // conditions[2] = {row: first_row, col: second_col};
-    // conditions[3] = {row: first_row, col: third_col};
-    // conditions[4] = {row: second_row, col: first_col};
-    // conditions[5] = {row: second_row, col: second_col};
-    // conditions[6] = {row: second_row, col: third_col};
-    // conditions[7] = {row: third_row, col: first_col};
-    // conditions[8] = {row: third_row, col: first_col};
-    // conditions[9] = {row: third_row, col: third_col};
-    //
-    // for (var i = 0; i < conditions.length; i++) {
-    //     //if (conditions[i].row && conditions[i].col)
-    //         console.log(conditions[i]);
-    // }
-
-    var video_duration = $('video')[0].duration;
-
-    // 1
-    if (first_row && first_col) {
-        console.log('1');
-        $('video')[0].currentTime = video_duration / (10 - 1);
-    }
-    // 2
-    if (first_row && second_col) {
-        console.log('2');
-        $('video')[0].currentTime = video_duration / (10 - 2);
-    }
-    // 3
-    if (first_row && third_col) {
-        console.log('3');
-        $('video')[0].currentTime = video_duration / (10 - 3);
-    }
-
-    // 1
-    if (second_row && first_col) {
-        console.log('4');
-        $('video')[0].currentTime = video_duration / (10 - 4);
-    }
-    // 2
-    if (second_row && second_col) {
-        console.log('5');
-        $('video')[0].currentTime = video_duration / (10 - 5);
-    }
-    // 3
-    if (second_row && third_col) {
-        console.log('6');
-        $('video')[0].currentTime = video_duration / (10 - 6);
-    }
-
-    // 1
-    if (third_row && first_col) {
-        console.log('7');
-        $('video')[0].currentTime = video_duration / (10 - 7);
-    }
-    // 2
-    if (third_row && second_col) {
-        console.log('8');
-        $('video')[0].currentTime = video_duration / (10 - 8);
-    }
-    // 3
-    if (third_row && third_col) {
-        console.log('9');
-        $('video')[0].currentTime = video_duration / (10 - 9);
-    }
-
 };

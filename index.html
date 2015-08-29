@@ -41,10 +41,14 @@
             </div>
         </div>
 
+        <div id="lib-info" class="position-absolute" style="bottom: 0; width: 100%;">
+            <h4 class="text-center">Default state</h4>
+        </div>
+
         <div class="background-video">
             <div class="background-video overlay"></div>
             <video id="example" autoplay loop="loop" muted="muted" volume="0">
-               <source src="" type="">
+               <source src="http://www.sample-videos.com/video/mp4/480/big_buck_bunny_480p_2mb.mp4" type="video/mp4">
             </video>
         </div>
 
@@ -69,7 +73,9 @@
                             videoSource: "http://www.w3schools.com/html/mov_bbb.ogg",
                             videoType: "video/ogg"
                         }
-                    }
+                    },
+
+                    defaultVideo: true//undefined
                 };
 
                 var videoChangeOnElementOver = new VideoChangeOnElementOver(options);

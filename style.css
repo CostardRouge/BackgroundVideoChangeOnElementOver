@@ -18,6 +18,18 @@
     vertical-align: middle;
 }
 
+.position-absolute {
+    position: absolute;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
 .background-video {
     display: block;
     position: fixed;
@@ -62,7 +74,7 @@ div.video-change-action {
     height: 100vh;
 }
 
-div.video-change-action:hover .badge {
+div.video-change-action:hover .badge, div.video-change-action.active .badge {
     background-color: #000;
 }
 
