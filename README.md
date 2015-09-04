@@ -1,9 +1,7 @@
 # VideoChangeOnElementOver
 > Manipulate video by hovering specific elements.
 
-## Demo
-
-[Click here](//costardrouge.eu)
+[Download the demo here](./demo/demo.zip)
 
 ## Documentation
 
@@ -39,7 +37,6 @@
 Element options list
 * data-video-name : video source name (declared in the init part)
 * data-video-position : video positions in seconds ("3, 8")
-* data-video-audio-volume : audio volume (from 0 to 100)
 * data-video-audio-volume : audio volume (from 0 to 100)
 
 #### 3. Init the lib
@@ -96,7 +93,6 @@ Element options list
  * Handle touch screen devices
  * Preload videos in cache
  * Handle audio volume options
- * Handle loop options
 
 ## About the lazy author
 > Steeve Pommier
