@@ -52,7 +52,7 @@
             </video>
         </div>
 
-        <script src="./videoChangeOnElementOver.js"></script>
+        <script src="../src/videoChangeOnElementOver.js"></script>
         <script src="./jquery.min.js"></script>
         <script src="./bootstrap.js"></script>
 
@@ -75,7 +75,10 @@
                         }
                     },
 
-                    defaultVideo: true//undefined
+                    noElementHoveredVideo: {
+                        videoSource: "http://www.w3schools.com/html/mov_bbb.ogg",
+                        videoType: "video/ogg"
+                    }
                 };
 
                 var videoChangeOnElementOver = new VideoChangeOnElementOver(options);

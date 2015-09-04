@@ -54,11 +54,14 @@ VideoChangeOnElementOver.prototype.bindEvents = function() {
         var element = $(this);
 
         //  check if default video looping strategy is defined
-        if (self.options.defaultVideo) {
+        if (self.options.noElementHoveredVideo) {
             element.removeClass('active');
-            $('#lib-info').show();
 
-            // launch default video
+            // videoSourceElement.attr('src', self.options.noElementHoveredVideo.VideoSource);
+            // videoSourceElement.attr('type', self.options.noElementHoveredVideo.VideoType);
+            // videoElement.load();
+
+            $('#lib-info').show();
         }
     });
 
