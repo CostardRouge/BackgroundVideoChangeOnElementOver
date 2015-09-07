@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>videoChangeOnElementOver</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="./bootstrap.css">
+        <!-- <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'> -->
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <div class="container-fluid text-center font-family-asap">
+            <div class="row">
+                <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="0,5">
+                    <div class="display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <h4 class="badge">0,5′</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="5,10">
+                    <div class="display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <h4 class="badge">5,10′</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 video-change-action" data-video-name="noise_video_test_mp4" data-video-position="10,15">
+                    <div class="display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <h4 class="badge">10,15′</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="lib-info" class="position-absolute" style="bottom: 0; width: 100%;">
+            <h4 class="text-center">Default state</h4>
+        </div>
+
+        <div class="background-video">
+            <div class="background-video overlay"></div>
+            <video id="example" autoplay loop="loop" muted="muted" volume="0">
+               <source src="http://www.sample-videos.com/video/mp4/480/big_buck_bunny_480p_2mb.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <script src="./videoChangeOnElementOver.js"></script>
+        <script src="./jquery.min.js"></script>
+        <script src="./bootstrap.js"></script>
+
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                var options = {
+                    elementsSelector: "div.video-change-action",
+
+                    videoTagSelector: "video[id='example']",
+                    videoSourceTagSelector: "video[id='example'] source",
+
+                    videoSources: {
+                        "noise_video_test_mp4" : {
+                            videoSource: "http://www.sample-videos.com/video/mp4/480/big_buck_bunny_480p_2mb.mp4",
+                            videoType: "video/mp4"
+                        },
+                        "noise_video_test_ogg" : {
+                            videoSource: "http://www.w3schools.com/html/mov_bbb.ogg",
+                            videoType: "video/ogg"
+                        }
+                    },
+
+                    noElementHoveredVideo: {
+                        videoSource: "http://www.w3schools.com/html/mov_bbb.ogg",
+                        videoType: "video/ogg"
+                    }
+                };
+
+                var videoChangeOnElementOver = new VideoChangeOnElementOver(options);
+
+                videoChangeOnElementOver.init(function() {
+                    console.log('videoChangeOnElementOver init callback');
+                });
+            });
+        </script>
+    </body>
+</html>

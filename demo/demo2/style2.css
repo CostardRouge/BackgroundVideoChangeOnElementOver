@@ -1,0 +1,99 @@
+/*@import url(https://fonts.googleapis.com/css?family=Asap);*/
+
+.font-family-asap {
+    font-family: 'Asap', sans-serif;
+}
+
+.display-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.display-table-cell {
+    display: table-cell;
+}
+
+.vertical-align-middle {
+    vertical-align: middle;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.background-video {
+    display: block;
+    position: fixed;
+    overflow: hidden;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -101;
+    /*background: url(../images/homepage/backgrounds/homepage_video_poster.jpg);*/
+    /*background-size: cover;*/
+}
+
+.background-video video {
+    display: block;
+    position: fixed;
+    /*bottom: 0;*/
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+
+    width: 100%;
+    height: 100%;
+}
+
+.background-video .overlay {
+    display: block;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    z-index: -99;
+    opacity: 0.6;
+}
+
+div.video-change-action {
+    height: 33.33333vh;
+}
+
+div.video-change-action:hover {
+    border: 1px solid black;
+}
+
+div.video-change-action:hover .badge, div.video-change-action.active .badge {
+    background-color: #000;
+}
+
+.badge {
+    position: relative;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    color: #FFF;
+    font-size: 2rem;
+    margin: 0 auto;
+}

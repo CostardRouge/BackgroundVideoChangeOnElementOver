@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>videoChangeOnElementOver</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="./bootstrap.css">
+        <!-- <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'> -->
+        <link rel="stylesheet" href="./style2.css">
+    </head>
+
+    <body>
+        <div class="container-fluid text-center font-family-asap">
+            <div class="row">
+                <div class="col-md-4 video-change-action" data-video-name="demo_9_block" data-video-position="5,10">
+                </div>
+
+                <div class="col-md-4 video-change-action" data-video-name="demo_9_block" data-video-position="11,16">
+                </div>
+
+                <div class="col-md-4 video-change-action" data-video-name="demo_9_block" data-video-position="17,22">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 video-change-action" data-video-name="demo_9_block" data-video-position="23,28">
+                </div>
+
+                <div class="col-md-4 video-change-action" data-video-name="demo_9_block" data-video-position="29,34">
+                </div>
+
+                <div class="col-md-4 video-change-action" data-video-name="demo_9_block" data-video-position="35,40">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4  video-change-action">
+                    <!-- <div class="display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <h4 class="badge">7</h4>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div class="col-md-4  video-change-action">
+
+                </div>
+
+                <div class="col-md-4  video-change-action">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="lib-info" class="position-absolute" style="bottom: 0; width: 100%;">
+            <h4 class="text-center">Default state</h4>
+        </div>
+
+        <div class="background-video">
+            <div class="background-video overlay"></div>
+            <video id="example" autoplay loop="loop" muted="muted" volume="0">
+               <source src="" type="video/mp4">
+            </video>
+        </div>
+
+        <script src="./videoChangeOnElementOver.js"></script>
+        <script src="./jquery.min.js"></script>
+        <script src="./bootstrap.js"></script>
+
+        <script type="text/javascript">
+            $( window ).resize(function() {
+                $VideoElement = $("video[id='example']"); //Cache Jquery reference of this
+                var iOriginalVideoHeight =  _VideoElement.videoHeight;
+                var iCurrentVideoHeight = $VideoElement.height();
+                var iVideoContainerHeight = $VideoElement.parent().height();
+                var iCurrentScale = iOriginalVideoHeight/iCurrentVideoHeight;
+                var iScaleY = (iVideoContainerHeight / iOriginalVideoHeight)*iCurrentScale;
+
+                //Important to note: Set the origin to the top left corner (0% 0%), or else the position of the video goes astray
+                $VideoElement.css({
+                    "transform-origin": "0% 0%",
+                    "transform":"scaleY(" + iScaleY +")",
+                    "-ms-transform-origin" : "0% 0% ", /* IE 9 */
+                    "-ms-transform":"scaleY(" + iScaleY +")", /* IE 9 */
+                    "-moz-transform-origin" : "0% 0%", /* Firefox */
+                    "-moz-transform":"scaleY(" + iScaleY +")", /* Firefox */
+                    "-webkit-transform-origin": "0% 0%", /* Safari and Chrome */
+                    "-webkit-transform":"scaleY(" + iScaleY +")", /* Safari and Chrome */
+                    "-o-transform-origin":"0% 0%", /* Opera */
+                    "-o-transform":"scaleY(" + iScaleY +")" /* Opera */
+                });
+            });
+
+            $( document ).ready(function() {
+                var options = {
+                    elementsSelector: "div.video-change-action",
+
+                    videoTagSelector: "video[id='example']",
+                    videoSourceTagSelector: "video[id='example'] source",
+
+                    videoSources: {
+                        "demo_9_block" : {
+                            videoSource: "./demo.mp4",
+                            videoType: "video/mp4"
+                        }
+                    }
+                };
+
+
+
+
+                var videoChangeOnElementOver = new VideoChangeOnElementOver(options);
+
+                videoChangeOnElementOver.init(function() {
+                    console.log('videoChangeOnElementOver init callback');
+                });
+            });
+        </script>
+    </body>
+</html>

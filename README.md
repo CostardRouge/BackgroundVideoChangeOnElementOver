@@ -1,7 +1,8 @@
 # VideoChangeOnElementOver
 > Manipulate video by hovering specific elements.
 
-[Download the demo here](https://raw.githubusercontent.com/CostardRouge/VideoChangeOnElementOver/master/demo/demo.zip)
+[1st demo](https://raw.githubusercontent.com/CostardRouge/VideoChangeOnElementOver/master/demo/demo1.zip)
+[2nd demo](https://raw.githubusercontent.com/CostardRouge/VideoChangeOnElementOver/master/demo/demo2.zip)
 
 ## Documentation
 
