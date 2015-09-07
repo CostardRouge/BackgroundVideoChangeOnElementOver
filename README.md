@@ -94,6 +94,7 @@ Element options list
  * Handle touch screen devices
  * Preload videos in cache
  * Handle audio volume options
+ * Handle aspect video ratio
 
 ## About the lazy author
 > Steeve Pommier
